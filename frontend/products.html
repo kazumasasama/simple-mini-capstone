@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Practice Vue.js</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="products.js" defer></script>
+</head>
+
+<body>
+  <h1>Hello from HTML!</h1>
+  <div id="app">
+    <div>
+      <h3>add product</h3>
+      <input type="text" placeholder="name" v-model="newProduct.name">
+      <input type="number" placeholder="price" v-model="newProduct.price">
+      <input type="text" placeholder="description" v-model="newProduct.description">
+      <input type="text" placeholder="image URL" v-model="newProduct.imageUrl">
+      <button @click="createProduct">add product</button>
+    </div>
+
+    <div>
+      <h3>update product</h3>
+      <input type="number" placeholder="ID" v-model="updatingProduct.id">
+      <button @click="getProduct">find product</button>
+      <input type="text" placeholder="name" v-model="updatingProduct.name">
+      <input type="number" placeholder="price" v-model="updatingProduct.price">
+      <input type="text" placeholder="description" v-model="updatingProduct.description">
+      <input type="text" placeholder="image URL" v-model="updatingProduct.imageUrl">
+      <button @click="updateProduct">update product</button>
+    </div>
+
+    <div>
+      <h3>delete product</h3>
+      <input type="number" placeholder="ID" v-model="deletingProduct">
+      <button @click="deleteProduct">delete product</button>
+    </div>
+
+    <div>
+      <h3>Product list</h3>
+      <ul v-for="product in products">
+        <li>
+          <h4>{{ product.name }} : ${{ product.price }}</h4>
+          <p>{{ product.description }}</p>
+          <p>{{ product.image_url }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
