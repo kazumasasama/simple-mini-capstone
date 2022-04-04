@@ -12,8 +12,7 @@ var App = {
         description: "",
         imageUrl: ""
       },
-      deletingProduct: null,
-      updatingProduct: {
+      product: {
         id: null,
         name: "",
         price: null,
@@ -28,9 +27,9 @@ var App = {
   methods: {
     getProduct() {
       axios
-        .get(`http://localhost:3000/products/${this.updatingProduct.id}`)
+        .get(`http://localhost:3000/products/${this.product.id}`)
         .then(response => {
-          this.updatingProduct = response.data;
+          this.product = response.data;
         });
     },
     getProducts() {
@@ -51,7 +50,8 @@ var App = {
         })
         .then(response => {
           console.log(response.data);
-          this.products.push();
+          this.products.push(this.newProduct);
+          this.newProduct = {};
         })
         .catch(error => {
           console.log(error);
@@ -59,11 +59,11 @@ var App = {
     },
     updateProduct() {
       axios
-        .patch(`http://localhost:3000/products/${this.updatingProduct.id}`, {
-          name: this.updatingProduct.name,
-          price: this.updatingProduct.price,
-          description: this.updatingProduct.description,
-          image_url: this.updatingProduct.imageUrl
+        .patch(`http://localhost:3000/products/${this.product.id}`, {
+          name: this.product.name,
+          price: this.product.price,
+          description: this.product.description,
+          image_url: this.product.imageUrl
         })
         .then(response => {
           console.log(response.data);
@@ -74,7 +74,7 @@ var App = {
         });
     },
     deleteProduct() {
-      let id = this.deletingProduct;
+      let id = this.product.id;
       axios
         .delete(`http://localhost:3000/products/${id}`)
         .then(response => {

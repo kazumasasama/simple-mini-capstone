@@ -22,19 +22,14 @@
     </div>
 
     <div>
-      <h3>update product</h3>
-      <input type="number" placeholder="ID" v-model="updatingProduct.id">
+      <h3>update / delete product</h3>
+      <input type="number" placeholder="ID" v-model="product.id">
       <button @click="getProduct">find product</button>
-      <input type="text" placeholder="name" v-model="updatingProduct.name">
-      <input type="number" placeholder="price" v-model="updatingProduct.price">
-      <input type="text" placeholder="description" v-model="updatingProduct.description">
-      <input type="text" placeholder="image URL" v-model="updatingProduct.imageUrl">
+      <input type="text" placeholder="name" v-model="product.name">
+      <input type="number" placeholder="price" v-model="product.price">
+      <input type="text" placeholder="description" v-model="product.description">
+      <input type="text" placeholder="image URL" v-model="product.imageUrl">
       <button @click="updateProduct">update product</button>
-    </div>
-
-    <div>
-      <h3>delete product</h3>
-      <input type="number" placeholder="ID" v-model="deletingProduct">
       <button @click="deleteProduct">delete product</button>
     </div>
 
